@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8137712470523953687}
   - component: {fileID: 5114863583281627394}
   - component: {fileID: 5426805763595065362}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bloc-rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
