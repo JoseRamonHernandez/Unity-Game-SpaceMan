@@ -10,6 +10,7 @@ public class playerController : MonoBehaviour
     public float runningSpeed = 1.5f;
     Rigidbody2D rigidBody;
     Animator animator;
+    Vector3 startPosition;
 
 
     private const string STATE_ALIVE = "isAlive";
@@ -28,6 +29,14 @@ public class playerController : MonoBehaviour
     {
         animator.SetBool(STATE_ALIVE, true);
         animator.SetBool(STATE_ON_THE_GROUND, false);
+
+        startPosition = this.transform.position;
+    }
+
+   public void StartGame()
+    {
+        this.transform.position = startPosition;
+        this.rigidBody.velocity = Vector2.zero;
     }
 
     // Update is called once per frame

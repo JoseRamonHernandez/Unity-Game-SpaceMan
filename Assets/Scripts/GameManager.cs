@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     
     public static GameManager sharedInstance;
 
+    private playerController controller;
+
     void Awake()
     {
         if(sharedInstance == null)
@@ -30,7 +32,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        controller = GameObject.Find("Player").GetComponent<playerController>();
     }
 
     // Update is called once per frame
@@ -66,6 +68,7 @@ public class GameManager : MonoBehaviour
         else if(newGameState == GameState.inGame)
         {
             //Lógica de inGame
+            controller.StartGame();
         }
         else if(newGameState == GameState.gameOver)
         {
