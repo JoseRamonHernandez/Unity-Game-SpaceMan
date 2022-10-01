@@ -33,7 +33,7 @@ public class playerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)){
+        if(Input.GetButtonDown("Jump")){
         Jump();}
 
         animator.SetBool(STATE_ON_THE_GROUND, IsTouchingTheGround());
@@ -42,19 +42,29 @@ public class playerController : MonoBehaviour
     }
 
     void FixedUpdate()
-    {
-        if(rigidBody.velocity.x < runningSpeed)
+    {   
+        if(GameManager.sharedInstance.currentGameState == GameState.inGame)
         {
-            rigidBody.velocity = new Vector2(runningSpeed, rigidBody.velocity.y);
+            if(rigidBody.velocity.x < runningSpeed)
+            {
+                rigidBody.velocity = new Vector2(runningSpeed, rigidBody.velocity.y);
+            }
+        }
+        else{
+            rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
         }
     }
+
 
     //Método para saltar
     void Jump()
     {
-        if(IsTouchingTheGround())
+        if(GameManager.sharedInstance.currentGameState == GameState.inGame)
         {
-            rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            if(IsTouchingTheGround())
+            {
+                rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            }
         }
     }
 
