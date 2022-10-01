@@ -7,8 +7,10 @@ public class playerController : MonoBehaviour
 
     // Variables del movimiento del personaje
     public float jumpForce = 6f;
+    public float runningSpeed = 1.5f;
     Rigidbody2D rigidBody;
     Animator animator;
+
 
     private const string STATE_ALIVE = "isAlive";
     private const string STATE_ON_THE_GROUND = "isOnTheGround";
@@ -37,6 +39,14 @@ public class playerController : MonoBehaviour
         animator.SetBool(STATE_ON_THE_GROUND, IsTouchingTheGround());
 
         Debug.DrawRay(this.transform.position, Vector2.down*1.5f, Color.green);
+    }
+
+    void FixedUpdate()
+    {
+        if(rigidBody.velocity.x < runningSpeed)
+        {
+            rigidBody.velocity = new Vector2(runningSpeed, rigidBody.velocity.y);
+        }
     }
 
     //Método para saltar
