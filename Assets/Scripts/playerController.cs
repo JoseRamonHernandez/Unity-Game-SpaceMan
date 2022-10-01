@@ -9,6 +9,11 @@ public class playerController : MonoBehaviour
     public float jumpForce = 6f;
     private Rigidbody2D rigidBody;
 
+    void Awake()
+    {
+        rigidBody = GetComponent<Rigidbody2D>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,12 +23,15 @@ public class playerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKey(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        {
+            Jump();
+        }
     }
-
+    
     //Método para saltar
     void Jump()
     {
-        
+        rigidBody.AddForce(Vector2.up*jumpForce, ForceMode2D.Impulse);
     }
 }
