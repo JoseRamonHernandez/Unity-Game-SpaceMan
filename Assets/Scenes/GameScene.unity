@@ -264,7 +264,7 @@ MonoBehaviour:
   jumpForce: 6
   groundMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
 --- !u!1001 &762751117725170572
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -322,7 +322,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 762751118340441829, guid: eb36cc73d209f4e4197ef851cdbd782d, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb36cc73d209f4e4197ef851cdbd782d, type: 3}
@@ -339,11 +339,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7525672598791993541, guid: a1578fcf8df1e944e8b9a45e07f7bfe0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.84
+      value: -2.32
       objectReference: {fileID: 0}
     - target: {fileID: 7525672598791993541, guid: a1578fcf8df1e944e8b9a45e07f7bfe0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.6
+      value: -4.36
       objectReference: {fileID: 0}
     - target: {fileID: 7525672598791993541, guid: a1578fcf8df1e944e8b9a45e07f7bfe0, type: 3}
       propertyPath: m_LocalPosition.z
