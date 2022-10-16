@@ -508,10 +508,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3308764633855060037, guid: 5bf404aac1caa3344afbfca629d213af, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -4
-      objectReference: {fileID: 0}
     - target: {fileID: 5051458287611865165, guid: 5bf404aac1caa3344afbfca629d213af, type: 3}
       propertyPath: m_Name
       value: LevelBlock1
@@ -559,10 +555,6 @@ PrefabInstance:
     - target: {fileID: 5051458287611865170, guid: 5bf404aac1caa3344afbfca629d213af, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7987126899619833927, guid: 5bf404aac1caa3344afbfca629d213af, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bf404aac1caa3344afbfca629d213af, type: 3}
