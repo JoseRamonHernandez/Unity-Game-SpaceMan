@@ -68,7 +68,8 @@ public class GameManager : MonoBehaviour
         else if(newGameState == GameState.inGame)
         {
             //Lógica de inGame
-            controller.StartGame();
+            LevelManager.sharedInstance.RemoveAllLevelBlocks();
+            Invoke("ReloadLevel", 01f);
         }
         else if(newGameState == GameState.gameOver)
         {
@@ -76,5 +77,12 @@ public class GameManager : MonoBehaviour
         }
 
         this.currentGameState = newGameState;
+    }
+
+    void ReloadLevel()
+    {
+            LevelManager.sharedInstance.GenerateInitialBlock();
+            controller.StartGame();
+        
     }
 }
