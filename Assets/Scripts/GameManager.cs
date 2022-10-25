@@ -64,16 +64,20 @@ public class GameManager : MonoBehaviour
         if(newGameState == GameState.menu)
         {
             //Lógica de menu
+            MenuManager.sharedInstance.ShowMainMenu();
         }
         else if(newGameState == GameState.inGame)
         {
             //Lógica de inGame
             LevelManager.sharedInstance.RemoveAllLevelBlocks();
-            Invoke("ReloadLevel", 01f);
+            LevelManager.sharedInstance.GenerateInitialBlock();
+            controller.StartGame();
+            MenuManager.sharedInstance.HideMainMenu();
         }
         else if(newGameState == GameState.gameOver)
         {
             //Lógica de gameOver
+            MenuManager.sharedInstance.ShowMainMenu();
         }
 
         this.currentGameState = newGameState;
