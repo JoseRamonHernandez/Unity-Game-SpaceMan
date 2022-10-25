@@ -46,4 +46,24 @@ public class Enemy : MonoBehaviour
             rigiBody.velocity = new Vector2(currentRunningSpeed, rigiBody.velocity.y);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //Debug.log(collision.tag);
+
+        if(collision.tag == "Coin")
+        {
+            return;
+        }
+
+        if(collision.tag == "Player")
+        {
+            collision.GameObject.GetComponent<PlayerController>().CollectHealth(-10);
+
+            return;
+        }
+
+        facingRight = !facingRight;
+
+    }
 }
