@@ -13,8 +13,14 @@ public class playerController : MonoBehaviour
     Vector3 startPosition;
 
 
-    private const string STATE_ALIVE = "isAlive";
-    private const string STATE_ON_THE_GROUND = "isOnTheGround";
+     const string STATE_ALIVE = "isAlive";
+     const string STATE_ON_THE_GROUND = "isOnTheGround";
+
+    private int healthPoints, manaPoints;
+
+    public const int INITIAL_HEALTH = 100, INITIAL_MANA =15, MAX_HEALTH = 200, MAX_MANA=30,
+    MIN_HEALTH = 10, MIN_MANA = 0;
+
 
     public LayerMask groundMask;
 
@@ -27,16 +33,27 @@ public class playerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animator.SetBool(STATE_ALIVE, true);
-        animator.SetBool(STATE_ON_THE_GROUND, false);
-
         startPosition = this.transform.position;
     }
 
    public void StartGame()
     {
+        
+        animator.SetBool(STATE_ALIVE, true);
+        animator.SetBool(STATE_ON_THE_GROUND, false);
+
+        healthPoints = INITIAL_HEALTH;
+        manaPoints = INITIAL_MANA;
+
+        Invoke("RestartPosition", 0.2f);
+    }
+
+    void RestartPosition()
+    {
         this.transform.position = startPosition;
         this.rigidBody.velocity = Vector2.zero;
+
+        GameObject mainCamera = GameObject Find("Main Camera");
     }
 
     // Update is called once per frame
@@ -99,5 +116,33 @@ public class playerController : MonoBehaviour
     {
         this.animator.SetBool(STATE_ALIVE, false);
         GameManager.sharedInstance.GameOver();
+    }
+
+    public void CollectHealth(int points)
+    {
+        this.healthPoints += points;
+        if(this.healthPoints >= MAX_HEALTH)
+        {
+            this.healthPoints = MAX_HEALTH;
+        }
+    }
+
+    public void CollectMana(int points)
+    {
+        this.manaPoints += points;
+        if(this.manaPoints >= MAX_MANA)
+        {
+            this.manaPoints = MAX_MANA;
+        }
+    }
+
+    public int GetHealth()
+    {
+        return healthPoints;
+    }
+
+    public int GetMana()
+    {
+        return manaPoints;
     }
 }
