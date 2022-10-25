@@ -21,11 +21,17 @@ public class Colectable : MonoBehaviour
 
     public int value = 1;
 
+    GameObject player;
 
     private void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
         itemCollider = GetComponent<CircleCollider2D>();
+    }
+
+    private void Start()
+    {
+        player = GameObject.Find("Player");
     }
 
     void Show()
@@ -52,8 +58,12 @@ public class Colectable : MonoBehaviour
                     GameManager.sharedInstance.CollectObject(this);
                 break;
             case CollectableType.healthPotion:
+                    //GameObject player = GameObject.Find("Player");
+                    player.GetComponent<playerController>().CollectHealth(this.value);
                 break;
             case CollectableType.manaPotions:
+                    //GameObject player = GameObject.Find("Player");
+                    player.GetComponent<playerController>().CollectMana(this.value);
                 break;
         }
     }
