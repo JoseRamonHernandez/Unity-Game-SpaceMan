@@ -26,8 +26,24 @@ public class Enemy : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        
+        float currentRunningSpeed = runningSpeed;
+
+        if(facingRight)
+        {
+            currentRunningSpeed = runningSpeed;
+            this.transform.eulerAngles = new Vector3(0,180,0);
+        }
+        else
+        {
+            currentRunningSpeed = -runningSpeed;
+            this.transform.eulerAngles = Vector3.zero;
+        }
+
+        if(GameManager.sharedInstance.currentRunningSpeed == GameState.inGame)
+        {
+            rigiBody.velocity = new Vector2(currentRunningSpeed, rigiBody.velocity.y);
+        }
     }
 }
