@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
 
     private playerController controller;
 
+    public int collectedObject = 0;
+
     void Awake()
     {
         if(sharedInstance == null)
@@ -88,5 +90,10 @@ public class GameManager : MonoBehaviour
             LevelManager.sharedInstance.GenerateInitialBlock();
             controller.StartGame();
         
+    }
+
+    public void CollectObject(Collectable collectable)
+    {
+        collectedObject += collectable.value;
     }
 }
